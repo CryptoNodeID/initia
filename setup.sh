@@ -11,7 +11,7 @@ SEEDS="2eaa272622d1ba6796100ab39f58c75d458b9dbc@34.142.181.82:26656,c28827cb96c1
 DENOM='uinit'
 REPO="https://github.com/initia-labs/initia.git"
 REPO_DIR="initia"
-BRANCH="v0.2.11"
+BRANCH="v0.2.12"
 GOPATH=$HOME/go
 
 #Prerequisites
