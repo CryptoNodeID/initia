@@ -184,8 +184,9 @@ ${DAEMON_NAME} tx distribution withdraw-all-rewards \\
   --from=$VALIDATOR_KEY_NAME \\
   --commission \\
   --chain-id="$CHAIN_ID" \\
-  --fees="1000${DENOM}" \\
-  --yes
+  --gas-adjustment 1.4 \
+  --gas auto \
+  --gas-prices 0.15${DENOM}
 EOF
 chmod ug+x claim_commission.sh
 
@@ -201,8 +202,9 @@ while true; do
         ${DAEMON_NAME} tx staking delegate \$(${DAEMON_NAME} keys show $VALIDATOR_KEY_NAME --bech val -a) \${amount}${DENOM} \\
         --from=$VALIDATOR_KEY_NAME \\
         --chain-id="$CHAIN_ID" \\
-        --gas="200000" \\
-        --gas-prices="10${DENOM}"
+        --gas-adjustment 1.4 \
+        --gas auto \
+        --gas-prices 0.15${DENOM}
     fi
 done
 EOF
@@ -223,7 +225,9 @@ ${DAEMON_NAME} tx staking create-validator \\
   --commission-max-rate="0.20" \\
   --commission-max-change-rate="0.01" \\
   --min-self-delegation="1" \\
-  --fees="1000${DENOM}" \\
+  --gas-adjustment 1.4 \
+  --gas auto \
+  --gas-prices 0.15${DENOM} \
   --from=$VALIDATOR_KEY_NAME
 EOF
 chmod ug+x create_validator.sh
@@ -233,7 +237,9 @@ tee unjail_validator.sh > /dev/null <<EOF
 ${DAEMON_NAME} tx slashing unjail \\
  --from=$VALIDATOR_KEY_NAME \\
  --chain-id="$CHAIN_ID" \\
- --fees="1000${DENOM}"
+ --gas-adjustment 1.4 \
+ --gas auto \
+ --gas-prices 0.15${DENOM}
 EOF
 chmod ug+x unjail_validator.sh
 
