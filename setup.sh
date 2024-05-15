@@ -199,7 +199,7 @@ while true; do
     if [[ ! \${amount} =~ ^[0-9]+(\.[0-9]*)?$ ]] || (( 10#\${amount} == 0 )); then
         echo "Invalid amount, please try again" >&2
     else
-        ${DAEMON_NAME} tx staking delegate \$(${DAEMON_NAME} keys show $VALIDATOR_KEY_NAME --bech val -a) \${amount}${DENOM} \\
+        ${DAEMON_NAME} tx mstaking delegate \$(${DAEMON_NAME} keys show $VALIDATOR_KEY_NAME --bech val -a) \${amount}${DENOM} \\
         --from=$VALIDATOR_KEY_NAME \\
         --chain-id="$CHAIN_ID" \\
         --gas-adjustment 1.4 \
@@ -212,7 +212,7 @@ chmod ug+x delegate.sh
 
 tee create_validator.sh > /dev/null <<EOF
 #!/bin/bash
-${DAEMON_NAME} tx staking create-validator \\
+${DAEMON_NAME} tx mstaking create-validator \\
   --amount=1000000${DENOM} \\
   --pubkey=\$(${DAEMON_NAME} tendermint show-validator) \\
   --moniker="$VALIDATOR_KEY_NAME" \\
