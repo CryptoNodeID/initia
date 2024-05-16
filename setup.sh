@@ -224,10 +224,9 @@ ${DAEMON_NAME} tx mstaking create-validator \\
   --commission-rate="0.10" \\
   --commission-max-rate="0.20" \\
   --commission-max-change-rate="0.01" \\
-  --min-self-delegation="1" \\
-  --gas-adjustment 1.4 \
-  --gas auto \
-  --gas-prices 0.15${DENOM} \
+  --gas-adjustment 1.4 \\
+  --gas auto \\
+  --gas-prices 0.15${DENOM} \\
   --from=$VALIDATOR_KEY_NAME
 EOF
 chmod ug+x create_validator.sh
